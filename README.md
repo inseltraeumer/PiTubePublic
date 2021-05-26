@@ -1,3 +1,3 @@
-# PiTube
+# PiTubePublic
 
-Livestreaming vom Raspberry Pi zu Youtube mit der Picam-Anwendung - https://github.com/iizukanao/picam
+Livestreaming from Raspberry Pi to Youtube using Picam - https://github.com/iizukanao/picam
