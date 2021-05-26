@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# start-pi-cam-script v2
+
 pidfile=/home/pi/PiTube/starter.pid
 
 while getopts k:s: option
