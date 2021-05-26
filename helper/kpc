@@ -1,0 +1,13 @@
+#!/bin/bash       
+
+file=/home/pi/PiTube/stream.pid
+
+if [ -f $file ]; then
+
+  cat $file | xargs kill -15
+
+else
+
+  echo "Picam does not seem to be running!"
+
+fi

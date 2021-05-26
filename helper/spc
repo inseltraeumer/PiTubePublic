@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [ -z $1 ]; then
+  echo "\$1: Youtube key fehlt"
+  exit 0
+fi
+
+nohup /home/pi/PiTube/init_stream.sh $1

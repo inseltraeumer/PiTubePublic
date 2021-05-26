@@ -1,0 +1,46 @@
+#!/bin/bash
+
+pidfile=/home/pi/PiTube/starter.pid
+
+while getopts k:s: option
+do
+  case "${option}"
+  in
+   k) KEY=${OPTARG};;
+   s) STOPAFTER=$(echo "scale=0; $OPTARG * 3600 / 1" | bc);;
+  esac
+done
+
+if [ -z $KEY ]; then
+  echo ""
+  echo "Passing a Youtube streaming key with the -k flag is required, exiting..."$
+  echo ""
+  exit 0
+fi
+
+if [ -z $STOPAFTER ]; then
+  echo ""
+  echo "No value or no valid value was passed via -s flag to stop the script after."
+  echo "Valid values are either full hours or decimals surrounded by double quotes!"
+  echo "The stream will run indefinitely until stopped or interrupted."
+  echo ""
+  STOPAFTER=-1
+fi
+
+echo $$ > $pidfile
+
+while [ $SECONDS -eq -1 -o $SECONDS -lt $STOPAFTER ]; do
+  if ! pgrep ffmpeg > /dev/null ; then
+    /usr/bin/kpc
+    sleep 13
+    /home/pi/PiTube/init_stream.sh $KEY &
+  fi
+  sleep 2
+done
+
+echo ""
+echo "Reached $STOPAFTER seconds. Exiting..."
+echo ""
+
+/usr/bin/kta
+

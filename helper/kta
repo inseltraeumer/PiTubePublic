@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# kill-them-all script
+
+file=/home/pi/PiTube/starter.pid
+
+if [ -f $file ] || pgrep spc2 > /dev/null ; then
+
+  pkill spc2
+  pkill picam
+  pkill ffmpeg
+  rm $file
+
+else
+
+  echo "Starter process does not seem to be running!"
+
+fi
