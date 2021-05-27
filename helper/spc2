@@ -2,7 +2,7 @@
 
 # start-pi-cam-script v2
 
-pidfile=/home/pi/PiTube/starter.pid
+pidfile=$PWD/../starter.pid
 
 while getopts k:s: option
 do
@@ -33,9 +33,9 @@ echo $$ > $pidfile
 
 while [ $SECONDS -eq -1 -o $SECONDS -lt $STOPAFTER ]; do
   if ! pgrep ffmpeg > /dev/null ; then
-    /usr/bin/kpc
+    /$PWD/kpc
     sleep 13
-    /home/pi/PiTube/init_stream.sh $KEY &
+    $PWD/../init_stream.sh $KEY &
   fi
   sleep 2
 done

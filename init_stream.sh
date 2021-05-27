@@ -11,8 +11,8 @@ vwidth=1280
 rotation=0
 exposure=nightpreview
 timeformat="%c"
-pitube_dir=/home/pi/PiTube
-picam_dir=/home/pi/picam
+pitube_dir=$PWD
+picam_dir=$HOME/picam
 pidfile=$pitube_dir/stream.pid
 
 echo $$ > $pidfile

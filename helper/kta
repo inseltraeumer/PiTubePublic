@@ -2,7 +2,7 @@
 
 # kill-them-all script
 
-file=/home/pi/PiTube/starter.pid
+file=$PWD/../starter.pid
 
 if [ -f $file ] || pgrep spc2 > /dev/null ; then
 
