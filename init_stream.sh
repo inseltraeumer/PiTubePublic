@@ -17,6 +17,8 @@ pidfile=$pitube_dir/stream.pid
 
 echo $$ > $pidfile
 
+[ ! -d ffmpeg-logs ] && mkdir $PWD/ffmpeg-logs
+
 if [ -z "$1" ];
   then
     echo "Usage: first argument must be the key found in your Youtube Classic Studio"
